@@ -1,25 +1,31 @@
 export default {
   name: 'marketData',
-  title: 'Global Market Data Cache',
+  title: 'Market Data Feed',
   type: 'document',
   fields: [
+    {
+      name: 'title',
+      title: 'Title Label',
+      type: 'string',
+      initialValue: 'Global Metal Prices Cache',
+      readOnly: true,
+    },
     {
       name: 'lastUpdated',
       title: 'Last Sync Timestamp',
       type: 'datetime',
     },
     {
-      name: 'rates',
-      title: 'Metal Rates (USD per Ounce)',
+      name: 'prices',
+      title: 'Metal Prices List',
       type: 'array',
       of: [
         {
           type: 'object',
           fields: [
-            {name: 'symbol', type: 'string', title: 'Metal Symbol (e.g., XAU)'},
-            {name: 'name', type: 'string', title: 'Display Name (e.g., Gold)'},
-            {name: 'price', type: 'string', title: 'Current Spot Price'},
-            {name: 'change', type: 'string', title: 'Daily Percent Change'},
+            {name: 'symbol', title: 'Asset Symbol', type: 'string'},
+            {name: 'price', title: 'Formatted Price (USD)', type: 'string'},
+            {name: 'change', title: '24h Change Percentage', type: 'string'},
           ],
         },
       ],
